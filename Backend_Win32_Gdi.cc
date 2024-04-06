@@ -18,3 +18,8 @@ void Gdi::set_pixel(int x, int y, uint8_t r, uint8_t g, uint8_t b)
 {
 	SetPixel(m_dc, x, y, RGB(r, g, b));
 }
+
+void Gdi::draw_text(int x, int y, const char *text)
+{
+	TextOutA(m_dc, x, y, text, strlen(text));
+}

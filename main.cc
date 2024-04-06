@@ -58,6 +58,11 @@ static void render(Starfield &starfield, Backend &backend, size_t delta_ns)
 {
 	float delta = static_cast<double>(delta_ns) / 10000000.0;
 	starfield.update_and_render(backend, delta);
+	double frame_time_ms = static_cast<double>(delta_ns) / 1000000.0;
+	size_t fps = 1000.0 / frame_time_ms;
+	char buf[256];
+	snprintf(buf, sizeof(buf), "%lu", fps);
+	backend.draw_text(0, 0, buf);
 }
 
 #ifdef ONE_SOURCE
